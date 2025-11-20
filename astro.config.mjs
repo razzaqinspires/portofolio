@@ -1,14 +1,16 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
-
 import react from '@astrojs/react';
-import tailwindcss from '@tailwindcss/vite';
+import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()],
-
-  vite: {
-    plugins: [tailwindcss()]
-  }
+  // URL domain GitHub Pages Anda
+  site: 'https://razzaqinspires.github.io',
+  
+  // Nama Repository GitHub Anda (WAJIB SAMA PERSIS)
+  // Jika nama repo Anda 'portofolio', biarkan seperti ini.
+  base: '/portofolio', 
+  
+  // Integrasi yang kita pakai (React untuk Three.js, Tailwind untuk Styling)
+  integrations: [react(), tailwind()],
 });

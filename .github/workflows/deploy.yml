@@ -1,0 +1,43 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Trigger saat push ke branch main
+  push:
+    branches: [ main ]
+  # Agar bisa deploy manual dari tab Actions
+  workflow_dispatch:
+
+# Izin yang dibutuhkan GITHUB_TOKEN
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Mencegah deploy ganda
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+      
+      - name: Install, build, and upload your site
+        uses: withastro/action@v2
+        with:
+           # Menggunakan npm (sesuai yang Anda pakai)
+           package-manager: npm
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

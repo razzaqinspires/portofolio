@@ -1,24 +1,42 @@
-# build output
-dist/
-# generated types
-.astro/
-
-# dependencies
+# --- Dependencies ---
+# Folder ini wajib di-ignore karena ukurannya besar dan bisa di-install ulang via npm install
 node_modules/
+/jspm_packages/
 
-# logs
+# --- Logs ---
+# Log error tidak perlu di-upload ke GitHub
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
 
-
-# environment variables
+# --- Environment Variables (PENTING) ---
+# Jangan pernah upload file yang berisi API KEY atau password
 .env
-.env.production
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# macOS-specific files
+# --- Operating System Files ---
+# Sampah file dari Windows atau Mac
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Desktop.ini
 
-# jetbrains setting folder
+# --- Editor & IDE Config ---
+# Konfigurasi personal editor Anda tidak perlu dilihat orang lain
 .idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Build Output ---
+# Jika nanti Anda pakai bundler (seperti Webpack/Vite), hasil build tidak perlu di-push source-nya
+dist/
+build/

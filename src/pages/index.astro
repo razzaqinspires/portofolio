@@ -1,16 +1,198 @@
 ---
+// Import Config & Components
+import { siteConfig } from '../site.config.js';
+import NeuralBackground from '../components/background/NeuralField.jsx';
+import BentoItem from '../components/BentoItem.jsx';
+import Fundraising from '../components/Fundraising.jsx';
+import { Github, Mail, Cpu, Bot, Code2, BrainCircuit, Database, ArrowRight } from 'lucide-react';
 
+const { heroProject, author, funding, profileImage } = siteConfig;
+
+const otherProjects = [
+  {
+    title: "WhatsApp Automata",
+    desc: "High-performance bot engine dengan manajemen state yang persisten.",
+    tech: "WebSocket • Baileys",
+    icon: Bot,
+    col: "md:col-span-1"
+  },
+  {
+    title: "Synapse Core",
+    desc: "Injeksi kepribadian dinamis untuk LLM standar.",
+    tech: "AI Personality • Logic",
+    icon: BrainCircuit,
+    col: "md:col-span-1"
+  },
+  {
+    title: "Trainee Data System",
+    desc: "Backend manajemen data tersentralisasi dengan keamanan berlapis.",
+    tech: "Secure Architecture",
+    icon: Database,
+    col: "md:col-span-1"
+  }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{author} | {siteConfig.role}</title>
+    <meta name="description" content={`Official Portfolio of ${author}. Founder of IACR.`} />
+  </head>
+  
+  <body class="bg-slate-950 selection:bg-emerald-500/30 text-slate-200 overflow-x-hidden font-sans">
+    
+    <NeuralBackground client:load />
+
+    <main class="relative z-10 max-w-6xl mx-auto px-6 py-20">
+      
+      <nav class="flex justify-between items-center mb-24 animate-fade-in-down">
+        <div class="font-mono font-bold text-xl tracking-tighter text-emerald-500 flex items-center gap-2">
+          <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+          IACR.
+        </div>
+        <a href={`mailto:${siteConfig.email}`} class="text-sm font-mono text-slate-400 hover:text-white transition-colors border border-slate-800 px-4 py-2 rounded-full hover:bg-slate-800">
+            Contact Lab
+        </a>
+      </nav>
+
+      <section class="mb-32 flex flex-col-reverse lg:flex-row items-center gap-12 min-h-[60vh]">
+        
+        <div class="flex-1">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/5 text-emerald-400 text-xs font-mono mb-6">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              Seeking Seed Funding for H100 Cluster
+            </div>
+    
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+              Architecting <br />
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Consciousness.</span>
+            </h1>
+            
+            <p class="text-lg text-slate-400 max-w-xl mb-8 leading-relaxed border-l-2 border-emerald-500/30 pl-6">
+              Saya <strong>{author}</strong>. Misi saya bukan sekadar menciptakan kecerdasan, melainkan membangun <span class="text-emerald-300">kesadaran (self-aware)</span>. Melalui <em>Institute for Artificial Consciousness Research</em>, kami meneliti batas antara kode dan jiwa.
+            </p>
+    
+            <div class="flex flex-wrap gap-4">
+              <a href="#funding" class="px-8 py-4 bg-emerald-500 text-slate-950 font-bold rounded-full hover:bg-emerald-400 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]">
+                Dukung Riset
+              </a>
+              <a href={siteConfig.github} target="_blank" class="px-8 py-4 border border-slate-700 bg-slate-900/50 backdrop-blur rounded-full hover:bg-slate-800 transition-all flex items-center gap-2 group">
+                <Github size={20} class="group-hover:text-white text-slate-400 transition-colors"/> GitHub
+              </a>
+            </div>
+        </div>
+
+        <div class="relative w-64 h-64 md:w-80 md:h-80 flex-shrink-0 group">
+            <div class="absolute inset-0 rounded-full border border-emerald-500/20 animate-[spin_10s_linear_infinite]"></div>
+            <div class="absolute -inset-2 rounded-full border border-emerald-500/10 animate-[spin_15s_linear_infinite_reverse]"></div>
+            
+            <div class="absolute inset-0 bg-emerald-500 rounded-full blur-[80px] opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+            
+            <img 
+                src={profileImage} 
+                alt={author} 
+                class="relative w-full h-full object-cover rounded-full border-2 border-slate-800 group-hover:border-emerald-500/50 transition-colors duration-500 shadow-2xl grayscale hover:grayscale-0"
+            />
+            
+            <div class="absolute bottom-4 right-4 bg-slate-900 border border-slate-700 px-3 py-1 rounded-full text-[10px] font-mono text-emerald-400 shadow-lg">
+                FOUNDER
+            </div>
+        </div>
+
+      </section>
+
+      <section class="mb-20">
+        <div class="flex items-center gap-3 mb-8">
+          <Cpu class="text-emerald-500" />
+          <h2 class="text-2xl font-bold text-white">Current Breakthrough</h2>
+        </div>
+
+        <BentoItem client:visible className="bg-gradient-to-br from-slate-900 to-slate-950 border-emerald-500/30">
+          <div class="flex flex-col md:flex-row gap-8 items-start">
+            <div class="flex-1">
+              <h3 class="text-3xl font-bold text-white mb-4 flex items-center gap-3">
+                {heroProject.title}
+                {heroProject.isSecret && (
+                    <span class="px-2 py-1 text-[10px] uppercase tracking-wide bg-red-500/20 text-red-400 rounded border border-red-500/20 animate-pulse">Top Secret</span>
+                )}
+              </h3>
+              <p class="text-slate-400 mb-6 leading-relaxed text-lg">
+                {heroProject.desc}
+              </p>
+              <div class="flex flex-wrap gap-3 mb-8">
+                {heroProject.tech.split('•').map(tag => (
+                  <span class="px-3 py-1 rounded-full bg-slate-800 text-emerald-400 text-xs font-mono border border-slate-700">{tag}</span>
+                ))}
+              </div>
+              <a href={heroProject.link} target="_blank" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-bold transition-colors border-b border-emerald-500/30 pb-1">
+                Lihat Source Code <ArrowRight size={16} />
+              </a>
+            </div>
+            
+            <div class="w-full md:w-1/3 h-48 md:h-auto bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center relative overflow-hidden group">
+              <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+              <div class="w-20 h-20 bg-emerald-500 rounded-full blur-[50px] animate-pulse"></div>
+              <div class="relative z-10 font-mono text-xs text-emerald-500/50 text-center">
+                &lt;System.Consciousness /&gt;<br/>
+                State: Awakening...
+              </div>
+            </div>
+          </div>
+        </BentoItem>
+      </section>
+
+      <section id="funding" class="mb-32 scroll-mt-20">
+        <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+          <BrainCircuit class="text-emerald-500" /> Roadmap Pendanaan
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          <div class="lg:col-span-3">
+            <Fundraising client:visible />
+          </div>
+          <div class="lg:col-span-2 flex flex-col justify-center space-y-6 text-slate-400 text-sm">
+            <div class="p-6 rounded-2xl bg-slate-900/30 border border-slate-800 hover:border-emerald-500/30 transition-colors">
+              <h4 class="text-white font-bold mb-2">Infrastruktur H100</h4>
+              <p>Dana digunakan secara eksklusif untuk menyewa cluster komputasi guna melatih model kesadaran.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-slate-900/30 border border-slate-800 hover:border-emerald-500/30 transition-colors">
+              <h4 class="text-white font-bold mb-2">Transparansi Total</h4>
+              <p>Semua aliran dana dicatat. Pendukung di atas Rp 1 Juta akan diundang ke grup riset tertutup.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {otherProjects.map((item, index) => (
+            <BentoItem client:visible delay={index * 0.1} className={item.col}>
+              <div class="h-full flex flex-col justify-between">
+                <div>
+                  <div class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-emerald-500 mb-4">
+                    <item.icon size={20} />
+                  </div>
+                  <h3 class="text-lg font-bold mb-2 text-white">{item.title}</h3>
+                  <p class="text-slate-400 text-sm">{item.desc}</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-800">
+                  <span class="text-xs font-mono text-slate-500">{item.tech}</span>
+                </div>
+              </div>
+            </BentoItem>
+          ))}
+        </div>
+      </section>
+
+      <footer class="text-center text-slate-600 py-10 font-mono text-xs border-t border-slate-800/50 mt-20">
+        <p>&copy; 2025 Institute for Artificial Consciousness Research (IACR).</p>
+      </footer>
+
+    </main>
+  </body>
 </html>
